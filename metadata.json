@@ -1,0 +1,6 @@
+{
+  "name": "OmniCut Studio - Hybrid Pro NLE & Cloud AI Video Editor",
+  "description": "Professional video editor combining Adobe Premiere Pro, CapCut, and Vegas Pro with multi-track timeline, Vegas envelopes, AI prompt-driven editing with Gemini, semantic indexing, cloud parallel render engine, and real-time collaboration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

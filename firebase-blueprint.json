@@ -1,0 +1,64 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile data stored upon authentication",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "photoURL": { "type": "string", "maxLength": 512 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "email"]
+    },
+    "VideoProject": {
+      "title": "VideoProject",
+      "description": "Video editing project document containing metadata and timeline references",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "aspectRatio": { "type": "string", "maxLength": 16 },
+        "duration": { "type": "number" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "ownerId", "title", "aspectRatio"]
+    },
+    "CloudMediaAsset": {
+      "title": "CloudMediaAsset",
+      "description": "Cloud-stored media asset metadata from Firebase Storage",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "ownerId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "type": { "type": "string", "maxLength": 32 },
+        "url": { "type": "string", "maxLength": 1024 },
+        "storagePath": { "type": "string", "maxLength": 512 },
+        "thumbnail": { "type": "string", "maxLength": 1024 },
+        "duration": { "type": "number" },
+        "resolution": { "type": "string", "maxLength": 64 },
+        "sizeBytes": { "type": "number" },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "ownerId", "title", "type", "url"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Collection storing authenticated user public profiles"
+    },
+    "/projects/{projectId}": {
+      "schema": "VideoProject",
+      "description": "Video projects owned by users"
+    },
+    "/users/{userId}/mediaAssets/{assetId}": {
+      "schema": "CloudMediaAsset",
+      "description": "User personal cloud media library items"
+    }
+  }
+}
